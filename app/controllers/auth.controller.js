@@ -11,8 +11,9 @@ exports.signup = (req, res) => {
   // Save User to Database
   User.create({
     username: req.body.username,
-    email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
+    fullname: req.body.fullname,
+    password: bcrypt.hashSync(req.body.password, 8),
+    timezone_id: req.body.timezone    
   })
     .then(user => {
       res.send({ message: "User registered successfully!" });
@@ -52,7 +53,8 @@ exports.signin = (req, res) => {
         res.status(200).send({
           id: user.id,
           username: user.username,
-          email: user.email,
+          fullname: user.fullname,
+          timezone: user.timezone_id,
           accessToken: token
         });
         
