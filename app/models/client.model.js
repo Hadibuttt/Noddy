@@ -2,24 +2,24 @@ module.exports = (sequelize, Sequelize) => {
     const Client = sequelize.define("clients", {
       item_id: { 
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         unique: true,
       },
       first_name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       last_name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       country: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       email: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true,
         validate: {
             isEmail: true
@@ -28,57 +28,61 @@ module.exports = (sequelize, Sequelize) => {
       phone: {
         type: Sequelize.STRING,
         primaryKey: true,
-        unique: true,
-        allowNull: false
+        unique: true
       },
       owner: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true,
+        defaultValue: 1,
       },
       status: {
         type: Sequelize.STRING,
-        defaultValue: 'New',
-        allowNull: false
+        defaultValue: "New",
+        allowNull: true
       },
       age: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       ip_address: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       affiliate_id: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       source: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       tag_1: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       tag_2: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       created_date: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        allowNull: true
       },
       assigned_date: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       },
       modified_date: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       },
       first_registration_date: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        allowNull: true
       }
     });
   
